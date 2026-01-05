@@ -1,0 +1,48 @@
+<div [class.shake-animation]="shake$()" (animationend)="shake$.set(false)">
+  @if(clue().status == undefined || clue().status === 0)
+  {
+  <div class="movie-input-set">
+    <mat-form-field class="movie-input">
+      <mat-label>Guess a Movie!</mat-label>
+      <input type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="movieTitle">
+        @for(movie of (searchMovies$ | async); track movie.id)
+        {
+        <mat-option [value]="movie">
+          {{ movie.title }}
+        </mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+    <button matFab aria-label="submit answer" (click)="submitGuess()">
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
+  }
+  @else {
+    @if (movieResult !== null)
+    {
+      <h3>{{movieResult.title}}</h3>
+    }
+  }
+
+  <div>
+    @for (i of [].constructor(clue().attempts ?? 0); track i)
+    {
+    <mat-icon class="wrong-icon">close</mat-icon>
+    }
+  </div>
+  <div class="review-set">
+    @for( review of clue().reviews; track review; let idx = $index)
+    {
+    <mat-card class="review-card" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>Review #{{idx + 1}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        {{review}}
+      </mat-card-content>
+    </mat-card>
+    }
+  </div>
+</div>

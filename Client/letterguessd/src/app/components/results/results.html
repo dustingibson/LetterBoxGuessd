@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>{{dateString}} Results</h2>
+<mat-dialog-content>
+    @for(curResult of results.tally; track curResult.attempts; let idx = $index )
+    {
+        Movie #{{idx + 1}}: 
+        @for(curAttempt of [].constructor(curResult.attempts); track curAttempt)
+        {
+            ❌
+        }
+        @if (curResult.passed)
+        {
+            ✅
+        }
+        <br/>
+    }
+    <br/>
+    <h3 [style]="this.gradeColor">Grade: {{this.grade}} {{this.percentage.toFixed(2)}}%</h3>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton mat-dialog-close cdkFocusInitial>OK</button>
+  <button matButton [cdkCopyToClipboard]="clipboardText()">Copy Clipboard</button>
+</mat-dialog-actions>

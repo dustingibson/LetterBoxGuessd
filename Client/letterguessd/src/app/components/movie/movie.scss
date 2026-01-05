@@ -1,0 +1,41 @@
+.review-card {
+    max-width: 400px;
+}
+
+.review-set {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: self-start;
+    gap: 30px;
+}
+
+.movie-input-set {
+    display: flex;
+    gap: 10px;
+}
+
+.movie-input {
+    flex-grow: 1;
+}
+
+.movie {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+  20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+.shake-animation {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+.wrong-icon {
+    color: #ff0000;
+    font-size: 36px;
+    width: 36px;
+    height: 36px;
+}

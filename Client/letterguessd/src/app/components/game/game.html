@@ -1,0 +1,12 @@
+<div class="app">
+    <h1>LETTERGUESSED - {{this.dateString}}</h1>
+    <h5>New Puzzle in {{timeDiff()}}</h5>
+    <div class="game">
+        <mat-tab-group>
+            @for (clue of clues$()?.movies ?? []; track clue.id; let idx = $index)
+            {
+                <mat-tab [label]="`Movie #${idx + 1} ${statusIcon(clue)}`"><app-movie [clue]=clue (notifyResult)="checkResult()"></app-movie></mat-tab>
+            }
+        </mat-tab-group>
+    </div>
+</div>
