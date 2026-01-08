@@ -23,9 +23,9 @@ export class ResultsComponent {
     this.results = newResults;
     this.results.tally.forEach((r, idx) => {
       if (r.passed)
-        this.score += 100 * (3 - r.attempts);
+        this.score += 100 * (5 - r.attempts);
     });
-    this.totalScore = this.results.tally.length * 300;
+    this.totalScore = this.results.tally.length * 500;
     this.percentage = (this.score / this.totalScore) * 100;
   }
 

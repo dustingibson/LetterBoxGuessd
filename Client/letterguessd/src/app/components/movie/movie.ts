@@ -82,7 +82,7 @@ export class MovieComponent implements OnInit {
     } else {
       this.clue().attempts = !this.clue().attempts ? 1 : this.clue().attempts + 1;
       this.shakeScreen();
-      if (this.clue().attempts >= 3) {
+      if (this.clue().attempts >= 5) {
         this.clue().status = Status.FAILED;
       }
     }
@@ -91,7 +91,7 @@ export class MovieComponent implements OnInit {
   }
 
   submitGuess() {
-    if (this.searchControl.value)
+    if (this.searchControl.value?.id)
       this.checkAttempt();
     this.searchControl.setValue('');
   }
